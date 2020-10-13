@@ -1,0 +1,22 @@
+<mat-nav-list>
+  <mat-toolbar color = "primary">DAGY</mat-toolbar>
+  <a mat-list-item routerLink="/home" (click)= "onSideNavClose()">
+    <mat-icon>home</mat-icon><span class="nav-caption">Home</span>
+  </a>
+  <a mat-list-item routerLink="/employees" (click)= "onSideNavClose()">
+    <mat-icon>assignment_ind</mat-icon><span class="nav-caption">Employee</span>
+  </a>
+  <a mat-list-item routerLink="/department" (click)= "onSideNavClose()">
+    <mat-icon>account_balance</mat-icon><span class="nav-caption">Department</span>
+  </a>
+
+  <mat-list-item [mat-menu-trigger-for]="menu">
+    <mat-icon>unfold_more</mat-icon>
+    <a matLine>Example</a>
+  </mat-list-item>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onSideNavClose()">Add contact</button>
+    <button mat-menu-item (click)="onSideNavClose()">View details</button>
+  </mat-menu>
+
+</mat-nav-list>
