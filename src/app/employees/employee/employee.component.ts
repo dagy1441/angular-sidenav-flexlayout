@@ -30,24 +30,27 @@ export class EmployeeComponent implements OnInit {
 
   onSubmit(){
     if (this.employeeService.form.valid) {
-      if (!this.employeeService.form.get('$Key').value) {
+      if (!this.employeeService.form.get('$key').value)
         this.employeeService.insertEmployee(this.employeeService.form.value);
-      }else{
+      else
         this.employeeService.editEmployee(this.employeeService.form.value);
         this.employeeService.form.reset();
         this.employeeService.initializeFormGroup();
         this.notificationService.success(':: Submitted successfully');
         this.onClose();
-      }
+
     }
   }
 
   onClose() {
-    this.employeeService.closeForm();
+    this.employeeService.form.reset();
+    this.employeeService.initializeFormGroup();
+    this.dialogRef.close();
   }
 
   onClear(){
-    this.employeeService.clearForm();
+    this.employeeService.form.reset();
+    this.employeeService.initializeFormGroup();
   }
 
 }

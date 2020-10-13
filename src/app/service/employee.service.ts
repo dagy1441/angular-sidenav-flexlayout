@@ -24,9 +24,7 @@ export class EmployeeService {
   constructor(
     private db: AngularFireDatabase,
     public fb: FormBuilder,
-    private datePipe: DatePipe,
-    private notificationService: NotificationService,
-    public dialogRef: MatDialogRef<EmployeeComponent>) {
+    private datePipe: DatePipe,) {
     this.employeeList = db.list(this.dbPath);
   }
 
@@ -34,7 +32,7 @@ export class EmployeeService {
     return this.employeeForm = this.fb.group(this.form);
   }
 
-  form :FormGroup = new FormGroup({
+  form : FormGroup = new FormGroup({
     $key: new FormControl(null),
     fullName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
@@ -47,7 +45,7 @@ export class EmployeeService {
   });
 
   initializeFormGroup() {
-    this.employeeForm.setValue({
+    this.form.setValue({
       $key: null,
       fullName: '',
       email: '',
@@ -63,7 +61,7 @@ export class EmployeeService {
   closeForm(){
     this.form.reset();
     this.initializeFormGroup();
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 
   clearForm(){

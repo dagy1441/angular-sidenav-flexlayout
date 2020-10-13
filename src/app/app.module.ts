@@ -5,6 +5,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
@@ -45,16 +47,18 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
     ReactiveFormsModule,
     FormsModule,
     AngularFireDatabaseModule,
+    MatDialogModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ToastrModule.forRoot(),
   ],
   providers: [
     EmployeeService,
-    NotificationService,
     DepartementService,
+    NotificationService,
     ConfirmDialogService,
     DatePipe,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[EmployeeComponent,MatConfirmDialogComponent]
 })
 export class AppModule { }
